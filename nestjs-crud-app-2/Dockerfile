@@ -23,6 +23,9 @@ RUN npm ci --prefer-offline --no-audit --progress=false \
 # Copy source code
 COPY . .
 
+# Copy test files and configs
+COPY ./test ./test
+
 # Build the application
 RUN npm run build
 

@@ -1,9 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'pagamento' })
 export class Pagamento {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn({ name: 'pagamentoId' })
+  pagamentoId!: number;
 
   @Column()
   pedidoId!: number;
@@ -13,4 +13,13 @@ export class Pagamento {
 
   @Column()
   status!: string;
+
+  @Column({ nullable: true })
+  stripePaymentIntentId?: string;
+
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  @UpdateDateColumn()
+  updatedAt!: Date;
 }

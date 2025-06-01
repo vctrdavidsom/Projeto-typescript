@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.PedidosController = void 0;
 const common_1 = require("@nestjs/common");
 const pedidos_service_1 = require("./pedidos.service");
-const pedido_entity_1 = require("../common/entities/pedido.entity");
+const create_pedido_dto_1 = require("./dto/create-pedido.dto");
 let PedidosController = class PedidosController {
     constructor(pedidosService) {
         this.pedidosService = pedidosService;
@@ -40,7 +40,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [pedido_entity_1.Pedido]),
+    __metadata("design:paramtypes", [create_pedido_dto_1.CreatePedidoDto]),
     __metadata("design:returntype", Promise)
 ], PedidosController.prototype, "create", null);
 __decorate([

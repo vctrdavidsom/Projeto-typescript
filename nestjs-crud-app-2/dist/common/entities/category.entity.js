@@ -15,9 +15,9 @@ const product_entity_1 = require("./product.entity");
 let Category = class Category {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'categoryId' }),
     __metadata("design:type", Number)
-], Category.prototype, "id", void 0);
+], Category.prototype, "categoryId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
@@ -31,6 +31,6 @@ __decorate([
     __metadata("design:type", Array)
 ], Category.prototype, "products", void 0);
 Category = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'category' })
 ], Category);
 exports.Category = Category;

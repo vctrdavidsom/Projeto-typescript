@@ -19,7 +19,8 @@ export class CuponsService {
   }
 
   findOne(id: number): Promise<Cupom | null> {
-    return this.cupomRepository.findOneBy({ id });
+    // Replace 'id' with the actual primary key property of Cupom, e.g., 'cupomId'
+    return this.cupomRepository.findOneBy({ cupomId: id });
   }
 
   async update(id: number, cupom: Partial<Cupom>): Promise<Cupom | null> {

@@ -8,5 +8,6 @@ import { Estabelecimento } from '../common/entities/estabelecimento.entity';
   imports: [TypeOrmModule.forFeature([Estabelecimento])],
   controllers: [EstabelecimentosController],
   providers: [EstabelecimentosService],
+  exports: [EstabelecimentosService], // exporta o service para outros módulos
 })
 export class EstabelecimentosModule {}

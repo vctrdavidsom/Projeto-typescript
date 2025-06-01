@@ -15,9 +15,9 @@ const pedido_entity_1 = require("./pedido.entity");
 let ItemPedido = class ItemPedido {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'item_pedidoId' }),
     __metadata("design:type", Number)
-], ItemPedido.prototype, "id", void 0);
+], ItemPedido.prototype, "itemPedidoId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
@@ -27,10 +27,11 @@ __decorate([
     __metadata("design:type", Number)
 ], ItemPedido.prototype, "quantidade", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => pedido_entity_1.Pedido, (pedido) => pedido.itens),
+    (0, typeorm_1.ManyToOne)(() => pedido_entity_1.Pedido, (pedido) => pedido.itens, { onDelete: 'CASCADE' }),
+    (0, typeorm_1.JoinColumn)({ name: 'pedidoId', referencedColumnName: 'pedidoId' }),
     __metadata("design:type", pedido_entity_1.Pedido)
 ], ItemPedido.prototype, "pedido", void 0);
 ItemPedido = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'item_pedido' })
 ], ItemPedido);
 exports.ItemPedido = ItemPedido;

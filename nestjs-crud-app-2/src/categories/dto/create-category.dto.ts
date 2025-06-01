@@ -1,12 +1,11 @@
-export class CreateCategoryDto {
-  name!: string;
-  description?: string;
-}
+import { IsString, IsNotEmpty, IsOptional } from 'class-validator';
 
-// filepath: /home/luan/Projects/nestjs-crud-app-2/src/products/dto/create-product.dto.ts
-export class CreateProductDto {
+export class CreateCategoryDto {
+  @IsString()
+  @IsNotEmpty()
   name!: string;
-  description!: string;
-  price!: number;
-  categoryId!: number;
+
+  @IsString()
+  @IsOptional()
+  description?: string;
 }

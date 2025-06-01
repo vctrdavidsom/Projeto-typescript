@@ -19,7 +19,7 @@ export class EnderecosService {
   }
 
   findOne(id: number): Promise<Endereco | null> {
-    return this.enderecoRepository.findOneBy({ id });
+    return this.enderecoRepository.findOneBy({ enderecoId : id });
   }
 
   async update(id: number, endereco: Partial<Endereco>): Promise<Endereco | null> {

@@ -8,5 +8,6 @@ import { Cupom } from '../common/entities/cupom.entity';
   imports: [TypeOrmModule.forFeature([Cupom])],
   controllers: [CuponsController],
   providers: [CuponsService],
+  exports: [CuponsService], // <-- export service for use in other modules
 })
 export class CuponsModule {}

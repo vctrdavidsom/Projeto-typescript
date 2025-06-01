@@ -19,6 +19,7 @@ UsuariosModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forFeature([usuario_entity_1.Usuario])],
         controllers: [usuarios_controller_1.UsuariosController],
         providers: [usuarios_service_1.UsuariosService],
+        exports: [usuarios_service_1.UsuariosService], // Export UsuariosService for DI in other modules
     })
 ], UsuariosModule);
 exports.UsuariosModule = UsuariosModule;

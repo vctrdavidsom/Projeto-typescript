@@ -28,7 +28,7 @@ let EnderecosService = class EnderecosService {
         return this.enderecoRepository.find();
     }
     findOne(id) {
-        return this.enderecoRepository.findOneBy({ id });
+        return this.enderecoRepository.findOneBy({ enderecoId: id });
     }
     async update(id, endereco) {
         const existingEndereco = await this.findOne(id);

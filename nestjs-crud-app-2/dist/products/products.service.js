@@ -35,7 +35,7 @@ let ProductsService = class ProductsService {
             }
             // Verifica se a categoria existe
             const category = await this.categoryRepository.findOneBy({
-                id: createProductDto.categoryId
+                categoryId: createProductDto.categoryId
             });
             if (!category) {
                 throw new common_1.NotFoundException('Categoria não encontrada');
@@ -105,7 +105,7 @@ let ProductsService = class ProductsService {
             const product = await this.findOneByName(name);
             if (updateProductDto.categoryId) {
                 const category = await this.categoryRepository.findOneBy({
-                    id: updateProductDto.categoryId
+                    categoryId: updateProductDto.categoryId
                 });
                 if (!category) {
                     throw new common_1.NotFoundException('Categoria não encontrada');

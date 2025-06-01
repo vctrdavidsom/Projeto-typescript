@@ -21,11 +21,18 @@ let EstabelecimentosService = class EstabelecimentosService {
     constructor(estabelecimentoRepository) {
         this.estabelecimentoRepository = estabelecimentoRepository;
     }
-    findAll() {
-        return this.estabelecimentoRepository.find();
+    async findAll(filtro) {
+        const where = {};
+        if (filtro === null || filtro === void 0 ? void 0 : filtro.nome)
+            where.nome = filtro.nome;
+        if (filtro === null || filtro === void 0 ? void 0 : filtro.cidade)
+            where.endereco = filtro.cidade; // Ajuste se cidade for campo separado
+        if (filtro === null || filtro === void 0 ? void 0 : filtro.status)
+            where.status = filtro.status;
+        return this.estabelecimentoRepository.find({ where });
     }
     findOne(id) {
-        return this.estabelecimentoRepository.findOneBy({ id });
+        return this.estabelecimentoRepository.findOneBy({ estabelecimentoId: id });
     }
     create(estabelecimento) {
         const newEstabelecimento = this.estabelecimentoRepository.create(estabelecimento);
@@ -41,6 +48,9 @@ let EstabelecimentosService = class EstabelecimentosService {
     async remove(id) {
         const result = await this.estabelecimentoRepository.delete(id);
         return result.affected ? result.affected > 0 : false;
+    }
+    async findPendentes() {
+        return this.estabelecimentoRepository.find({ where: { status: 'PENDENTE' } });
     }
 };
 EstabelecimentosService = __decorate([

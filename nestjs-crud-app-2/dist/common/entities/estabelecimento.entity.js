@@ -14,9 +14,9 @@ const typeorm_1 = require("typeorm");
 let Estabelecimento = class Estabelecimento {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'estabelecimentoId' }),
     __metadata("design:type", Number)
-], Estabelecimento.prototype, "id", void 0);
+], Estabelecimento.prototype, "estabelecimentoId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -29,7 +29,11 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Estabelecimento.prototype, "telefone", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ default: 'PENDENTE' }),
+    __metadata("design:type", String)
+], Estabelecimento.prototype, "status", void 0);
 Estabelecimento = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'estabelecimento' })
 ], Estabelecimento);
 exports.Estabelecimento = Estabelecimento;

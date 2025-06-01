@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Param, Body, ParseIntPipe } from '@nestjs/common';
 import { ItensPedidoService } from './itens-pedido.service';
 import { ItemPedido } from '../common/entities/item-pedido.entity';
 
@@ -17,17 +17,17 @@ export class ItensPedidoController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: number): Promise<ItemPedido | null> {
+  findOne(@Param('id', ParseIntPipe) id: number): Promise<ItemPedido | null> {
     return this.itensPedidoService.findOne(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: number, @Body() itemPedido: Partial<ItemPedido>): Promise<ItemPedido | null> {
+  update(@Param('id', ParseIntPipe) id: number, @Body() itemPedido: Partial<ItemPedido>): Promise<ItemPedido | null> {
     return this.itensPedidoService.update(id, itemPedido);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: number): Promise<boolean> {
+  remove(@Param('id', ParseIntPipe) id: number): Promise<boolean> {
     return this.itensPedidoService.remove(id);
   }
 }

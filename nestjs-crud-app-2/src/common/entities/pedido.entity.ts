@@ -1,14 +1,15 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany } from 'typeorm';
-import { Usuario } from './usuario.entity';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, OneToMany, CreateDateColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
+import { User } from '../../users/entities/user.entity';
 import { ItemPedido } from './item-pedido.entity';
 
-@Entity()
+@Entity({ name: 'pedido' })
 export class Pedido {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn({ name: 'pedidoId' })
+  pedidoId!: number;
 
-  @ManyToOne(() => Usuario, (usuario) => usuario.pedidos)
-  usuario!: Usuario;
+  @ManyToOne(() => User, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'userId', referencedColumnName: 'userId' })
+  user!: User;
 
   @Column()
   status!: string;
@@ -18,4 +19,10 @@ export class Pedido {
 
   @OneToMany(() => ItemPedido, (itemPedido) => itemPedido.pedido)
   itens!: ItemPedido[];
+
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  @UpdateDateColumn()
+  updatedAt!: Date;
 }

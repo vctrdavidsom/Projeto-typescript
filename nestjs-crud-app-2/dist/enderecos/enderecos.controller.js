@@ -15,7 +15,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.EnderecosController = void 0;
 const common_1 = require("@nestjs/common");
 const enderecos_service_1 = require("./enderecos.service");
-const endereco_entity_1 = require("../common/entities/endereco.entity");
+const create_endereco_dto_1 = require("./dto/create-endereco.dto");
 let EnderecosController = class EnderecosController {
     constructor(enderecosService) {
         this.enderecosService = enderecosService;
@@ -40,7 +40,7 @@ __decorate([
     (0, common_1.Post)(),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [endereco_entity_1.Endereco]),
+    __metadata("design:paramtypes", [create_endereco_dto_1.CreateEnderecoDto]),
     __metadata("design:returntype", Promise)
 ], EnderecosController.prototype, "create", null);
 __decorate([

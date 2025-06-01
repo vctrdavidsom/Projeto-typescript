@@ -25,7 +25,7 @@ let ItensPedidoService = class ItensPedidoService {
         return this.itemPedidoRepository.find();
     }
     findOne(id) {
-        return this.itemPedidoRepository.findOneBy({ id });
+        return this.itemPedidoRepository.findOneBy({ itemPedidoId: id });
     }
     create(itemPedido) {
         const newItemPedido = this.itemPedidoRepository.create(itemPedido);

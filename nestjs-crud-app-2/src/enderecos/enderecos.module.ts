@@ -8,5 +8,6 @@ import { Endereco } from '../common/entities/endereco.entity';
   imports: [TypeOrmModule.forFeature([Endereco])],
   controllers: [EnderecosController],
   providers: [EnderecosService],
+  exports: [EnderecosService],
 })
 export class EnderecosModule {}

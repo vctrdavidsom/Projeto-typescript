@@ -1,14 +1,15 @@
 import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
 import { PedidosService } from './pedidos.service';
 import { Pedido } from '../common/entities/pedido.entity';
+import { CreatePedidoDto } from './dto/create-pedido.dto';
 
 @Controller('pedidos')
 export class PedidosController {
   constructor(private readonly pedidosService: PedidosService) {}
 
   @Post()
-  create(@Body() pedido: Pedido): Promise<Pedido> {
-    return this.pedidosService.create(pedido);
+  create(@Body() pedido: CreatePedidoDto): Promise<Pedido> {
+    return this.pedidosService.create(pedido as any);
   }
 
   @Get()

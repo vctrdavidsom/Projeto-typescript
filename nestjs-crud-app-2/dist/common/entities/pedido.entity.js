@@ -11,18 +11,19 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Pedido = void 0;
 const typeorm_1 = require("typeorm");
-const usuario_entity_1 = require("./usuario.entity");
+const user_entity_1 = require("../../users/entities/user.entity");
 const item_pedido_entity_1 = require("./item-pedido.entity");
 let Pedido = class Pedido {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'pedidoId' }),
     __metadata("design:type", Number)
-], Pedido.prototype, "id", void 0);
+], Pedido.prototype, "pedidoId", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => usuario_entity_1.Usuario, (usuario) => usuario.pedidos),
-    __metadata("design:type", usuario_entity_1.Usuario)
-], Pedido.prototype, "usuario", void 0);
+    (0, typeorm_1.ManyToOne)(() => user_entity_1.User, { onDelete: 'CASCADE' }),
+    (0, typeorm_1.JoinColumn)({ name: 'userId', referencedColumnName: 'userId' }),
+    __metadata("design:type", user_entity_1.User)
+], Pedido.prototype, "user", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -35,7 +36,15 @@ __decorate([
     (0, typeorm_1.OneToMany)(() => item_pedido_entity_1.ItemPedido, (itemPedido) => itemPedido.pedido),
     __metadata("design:type", Array)
 ], Pedido.prototype, "itens", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Pedido.prototype, "createdAt", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Pedido.prototype, "updatedAt", void 0);
 Pedido = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'pedido' })
 ], Pedido);
 exports.Pedido = Pedido;

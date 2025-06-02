@@ -29,7 +29,7 @@ let UsuariosService = class UsuariosService {
         return this.usuarioRepository.find();
     }
     findOne(id) {
-        return this.usuarioRepository.findOneBy({ id });
+        return this.usuarioRepository.findOneBy({ usuariosId: id });
     }
     async update(id, updateUsuarioDto) {
         const usuario = await this.findOne(id);

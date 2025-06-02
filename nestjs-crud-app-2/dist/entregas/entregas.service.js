@@ -25,7 +25,7 @@ let EntregasService = class EntregasService {
         return this.entregaRepository.find();
     }
     findOne(id) {
-        return this.entregaRepository.findOneBy({ id });
+        return this.entregaRepository.findOneBy({ entregaId: id });
     }
     create(entrega) {
         const newEntrega = this.entregaRepository.create(entrega);

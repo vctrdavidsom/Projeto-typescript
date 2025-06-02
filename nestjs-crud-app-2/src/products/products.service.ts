@@ -28,7 +28,7 @@ export class ProductsService {
 
       // Verifica se a categoria existe
       const category = await this.categoryRepository.findOneBy({ 
-        id: createProductDto.categoryId 
+        categoryId: createProductDto.categoryId 
       });
 
       if (!category) {
@@ -125,7 +125,7 @@ export class ProductsService {
 
       if (updateProductDto.categoryId) {
         const category = await this.categoryRepository.findOneBy({ 
-          id: updateProductDto.categoryId 
+          categoryId: updateProductDto.categoryId 
         });
         if (!category) {
           throw new NotFoundException('Categoria não encontrada');

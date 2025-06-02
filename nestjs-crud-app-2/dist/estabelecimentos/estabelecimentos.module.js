@@ -19,6 +19,7 @@ EstabelecimentosModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forFeature([estabelecimento_entity_1.Estabelecimento])],
         controllers: [estabelecimentos_controller_1.EstabelecimentosController],
         providers: [estabelecimentos_service_1.EstabelecimentosService],
+        exports: [estabelecimentos_service_1.EstabelecimentosService], // exporta o service para outros módulos
     })
 ], EstabelecimentosModule);
 exports.EstabelecimentosModule = EstabelecimentosModule;

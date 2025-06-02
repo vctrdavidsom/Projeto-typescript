@@ -15,7 +15,7 @@ export class EntregasService {
   }
 
   findOne(id: number): Promise<Entrega | null> {
-    return this.entregaRepository.findOneBy({ id });
+    return this.entregaRepository.findOneBy({ entregaId: id });
   }
 
   create(entrega: Partial<Entrega>): Promise<Entrega> {

@@ -29,7 +29,7 @@ let CategoriesService = class CategoriesService {
         return this.categoryRepository.find();
     }
     findOne(id) {
-        return this.categoryRepository.findOneBy({ id });
+        return this.categoryRepository.findOneBy({ categoryId: id });
     }
     findOneByName(name) {
         return this.categoryRepository.findOneBy({ name });

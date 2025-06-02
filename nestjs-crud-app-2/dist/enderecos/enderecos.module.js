@@ -19,6 +19,7 @@ EnderecosModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forFeature([endereco_entity_1.Endereco])],
         controllers: [enderecos_controller_1.EnderecosController],
         providers: [enderecos_service_1.EnderecosService],
+        exports: [enderecos_service_1.EnderecosService],
     })
 ], EnderecosModule);
 exports.EnderecosModule = EnderecosModule;

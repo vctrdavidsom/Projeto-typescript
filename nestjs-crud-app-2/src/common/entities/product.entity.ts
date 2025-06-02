@@ -1,10 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne, CreateDateColumn, UpdateDateColumn, JoinColumn } from 'typeorm';
 import { Category } from './category.entity';
 
-@Entity()
+@Entity({ name: 'product' })
 export class Product {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn({ name: 'productId' })
+  productId!: number;
 
   @Column({ unique: true })
   name!: string;
@@ -36,10 +36,8 @@ export class Product {
   @Column({ nullable: true })
   seasonality?: string; // ex: "Verão", "Ano todo"
 
-  @ManyToOne(() => Category, (category) => category.products, { 
-    onDelete: 'RESTRICT',
-    nullable: false 
-  })
+  @ManyToOne(() => Category, (category) => category.products, { onDelete: 'RESTRICT', nullable: false })
+  @JoinColumn({ name: 'categoryId', referencedColumnName: 'categoryId' })
   category!: Category;
 
   @CreateDateColumn()

@@ -22,13 +22,13 @@ let UsersController = class UsersController {
         this.usersService = usersService;
     }
     async findOne(id) {
-        return this.usersService.findById(+id);
+        return this.usersService.findById(id);
     }
     async update(id, updateUserDto) {
-        return this.usersService.update(+id, updateUserDto);
+        return this.usersService.update(id, updateUserDto);
     }
     async remove(id) {
-        return this.usersService.remove(+id);
+        return this.usersService.remove(id);
     }
 };
 __decorate([
@@ -38,9 +38,9 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Obter usuário por ID' }),
     (0, swagger_1.ApiResponse)({ status: 200, description: 'Usuário encontrado' }),
     (0, swagger_1.ApiResponse)({ status: 404, description: 'Usuário não encontrado' }),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "findOne", null);
 __decorate([
@@ -50,10 +50,10 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Atualizar usuário' }),
     (0, swagger_1.ApiResponse)({ status: 200, description: 'Usuário atualizado com sucesso' }),
     (0, swagger_1.ApiResponse)({ status: 404, description: 'Usuário não encontrado' }),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:paramtypes", [Number, Object]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "update", null);
 __decorate([
@@ -63,9 +63,9 @@ __decorate([
     (0, swagger_1.ApiOperation)({ summary: 'Remover usuário' }),
     (0, swagger_1.ApiResponse)({ status: 200, description: 'Usuário removido com sucesso' }),
     (0, swagger_1.ApiResponse)({ status: 404, description: 'Usuário não encontrado' }),
-    __param(0, (0, common_1.Param)('id')),
+    __param(0, (0, common_1.Param)('id', common_1.ParseIntPipe)),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
+    __metadata("design:paramtypes", [Number]),
     __metadata("design:returntype", Promise)
 ], UsersController.prototype, "remove", null);
 UsersController = __decorate([

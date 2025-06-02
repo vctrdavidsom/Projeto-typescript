@@ -15,7 +15,7 @@ export class ItensPedidoService {
   }
 
   findOne(id: number): Promise<ItemPedido | null> {
-    return this.itemPedidoRepository.findOneBy({ id });
+    return this.itemPedidoRepository.findOneBy({ itemPedidoId : id });
   }
 
   create(itemPedido: Partial<ItemPedido>): Promise<ItemPedido> {

@@ -14,9 +14,9 @@ const typeorm_1 = require("typeorm");
 let Cupom = class Cupom {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'cupomId' }),
     __metadata("design:type", Number)
-], Cupom.prototype, "id", void 0);
+], Cupom.prototype, "cupomId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -30,6 +30,6 @@ __decorate([
     __metadata("design:type", Date)
 ], Cupom.prototype, "validade", void 0);
 Cupom = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'cupom' })
 ], Cupom);
 exports.Cupom = Cupom;

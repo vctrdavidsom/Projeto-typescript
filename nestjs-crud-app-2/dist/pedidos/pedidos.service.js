@@ -17,18 +17,39 @@ const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const typeorm_2 = require("typeorm");
 const pedido_entity_1 = require("../common/entities/pedido.entity");
+const users_service_1 = require("../users/users.service");
+const enderecos_service_1 = require("../enderecos/enderecos.service");
 let PedidosService = class PedidosService {
-    constructor(pedidoRepository) {
+    constructor(pedidoRepository, usersService, enderecosService) {
         this.pedidoRepository = pedidoRepository;
+        this.usersService = usersService;
+        this.enderecosService = enderecosService;
     }
-    create(pedido) {
+    async create(dto) {
+        // Busca o usuário
+        const user = await this.usersService.findById(dto.userId);
+        if (!user)
+            throw new common_1.BadRequestException('Usuário não encontrado');
+        // Busca o endereço
+        const endereco = await this.enderecosService.findOne(dto.enderecoId);
+        if (!endereco)
+            throw new common_1.BadRequestException('Endereço não encontrado');
+        // Monta string do endereço de entrega
+        const enderecoEntrega = `${endereco.rua}, ${endereco.numero}, ${endereco.cidade} - ${endereco.estado}, ${endereco.cep}`;
+        // Cria o pedido
+        const pedido = this.pedidoRepository.create({
+            user,
+            status: 'PENDENTE',
+            enderecoEntrega,
+            itens: [], // Itens devem ser criados separadamente
+        });
         return this.pedidoRepository.save(pedido);
     }
     findAll() {
         return this.pedidoRepository.find();
     }
     findOne(id) {
-        return this.pedidoRepository.findOneBy({ id });
+        return this.pedidoRepository.findOneBy({ pedidoId: id });
     }
     async update(id, pedido) {
         const existingPedido = await this.findOne(id);
@@ -45,6 +66,8 @@ let PedidosService = class PedidosService {
 PedidosService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, typeorm_1.InjectRepository)(pedido_entity_1.Pedido)),
-    __metadata("design:paramtypes", [typeorm_2.Repository])
+    __metadata("design:paramtypes", [typeorm_2.Repository,
+        users_service_1.UsersService,
+        enderecos_service_1.EnderecosService])
 ], PedidosService);
 exports.PedidosService = PedidosService;

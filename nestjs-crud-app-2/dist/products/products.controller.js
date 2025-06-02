@@ -18,6 +18,7 @@ const products_service_1 = require("./products.service");
 const create_product_dto_1 = require("./dto/create-product.dto");
 const update_product_dto_1 = require("./dto/update-product.dto");
 const swagger_1 = require("@nestjs/swagger");
+const public_decorator_1 = require("../auth/decorators/public.decorator");
 let ProductsController = class ProductsController {
     constructor(productsService) {
         this.productsService = productsService;
@@ -63,6 +64,7 @@ __decorate([
 ], ProductsController.prototype, "createProduct", null);
 __decorate([
     (0, common_1.Get)(),
+    (0, public_decorator_1.Public)(),
     (0, swagger_1.ApiOperation)({ summary: 'Listar todos os produtos' }),
     (0, swagger_1.ApiQuery)({ name: 'categoryId', required: false, type: Number }),
     (0, swagger_1.ApiQuery)({ name: 'isActive', required: false, type: Boolean }),

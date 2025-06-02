@@ -19,6 +19,7 @@ CuponsModule = __decorate([
         imports: [typeorm_1.TypeOrmModule.forFeature([cupom_entity_1.Cupom])],
         controllers: [cupons_controller_1.CuponsController],
         providers: [cupons_service_1.CuponsService],
+        exports: [cupons_service_1.CuponsService], // <-- export service for use in other modules
     })
 ], CuponsModule);
 exports.CuponsModule = CuponsModule;

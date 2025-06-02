@@ -14,9 +14,9 @@ const typeorm_1 = require("typeorm");
 let Endereco = class Endereco {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'enderecoId' }),
     __metadata("design:type", Number)
-], Endereco.prototype, "id", void 0);
+], Endereco.prototype, "enderecoId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -38,6 +38,6 @@ __decorate([
     __metadata("design:type", String)
 ], Endereco.prototype, "cep", void 0);
 Endereco = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'endereco' })
 ], Endereco);
 exports.Endereco = Endereco;

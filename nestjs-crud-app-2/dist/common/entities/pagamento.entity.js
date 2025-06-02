@@ -14,9 +14,9 @@ const typeorm_1 = require("typeorm");
 let Pagamento = class Pagamento {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'pagamentoId' }),
     __metadata("design:type", Number)
-], Pagamento.prototype, "id", void 0);
+], Pagamento.prototype, "pagamentoId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
@@ -29,7 +29,19 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Pagamento.prototype, "status", void 0);
+__decorate([
+    (0, typeorm_1.Column)({ nullable: true }),
+    __metadata("design:type", String)
+], Pagamento.prototype, "stripePaymentIntentId", void 0);
+__decorate([
+    (0, typeorm_1.CreateDateColumn)(),
+    __metadata("design:type", Date)
+], Pagamento.prototype, "createdAt", void 0);
+__decorate([
+    (0, typeorm_1.UpdateDateColumn)(),
+    __metadata("design:type", Date)
+], Pagamento.prototype, "updatedAt", void 0);
 Pagamento = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'pagamento' })
 ], Pagamento);
 exports.Pagamento = Pagamento;

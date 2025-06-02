@@ -1,14 +1,15 @@
 import { Controller, Get, Post, Put, Delete, Param, Body } from '@nestjs/common';
 import { EnderecosService } from './enderecos.service';
 import { Endereco } from '../common/entities/endereco.entity';
+import { CreateEnderecoDto } from './dto/create-endereco.dto';
 
 @Controller('enderecos')
 export class EnderecosController {
   constructor(private readonly enderecosService: EnderecosService) {}
 
   @Post()
-  create(@Body() endereco: Endereco): Promise<Endereco> {
-    return this.enderecosService.create(endereco);
+  create(@Body() endereco: CreateEnderecoDto): Promise<Endereco> {
+    return this.enderecosService.create(endereco as Endereco);
   }
 
   @Get()

@@ -11,13 +11,12 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Usuario = void 0;
 const typeorm_1 = require("typeorm");
-const pedido_entity_1 = require("./pedido.entity");
 let Usuario = class Usuario {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'usuariosId' }),
     __metadata("design:type", Number)
-], Usuario.prototype, "id", void 0);
+], Usuario.prototype, "usuariosId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
@@ -34,10 +33,6 @@ __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", String)
 ], Usuario.prototype, "telefone", void 0);
-__decorate([
-    (0, typeorm_1.OneToMany)(() => pedido_entity_1.Pedido, (pedido) => pedido.usuario),
-    __metadata("design:type", Array)
-], Usuario.prototype, "pedidos", void 0);
 Usuario = __decorate([
     (0, typeorm_1.Entity)('usuarios')
 ], Usuario);

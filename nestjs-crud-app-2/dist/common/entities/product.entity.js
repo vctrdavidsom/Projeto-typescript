@@ -15,9 +15,9 @@ const category_entity_1 = require("./category.entity");
 let Product = class Product {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'productId' }),
     __metadata("design:type", Number)
-], Product.prototype, "id", void 0);
+], Product.prototype, "productId", void 0);
 __decorate([
     (0, typeorm_1.Column)({ unique: true }),
     __metadata("design:type", String)
@@ -59,10 +59,8 @@ __decorate([
     __metadata("design:type", String)
 ], Product.prototype, "seasonality", void 0);
 __decorate([
-    (0, typeorm_1.ManyToOne)(() => category_entity_1.Category, (category) => category.products, {
-        onDelete: 'RESTRICT',
-        nullable: false
-    }),
+    (0, typeorm_1.ManyToOne)(() => category_entity_1.Category, (category) => category.products, { onDelete: 'RESTRICT', nullable: false }),
+    (0, typeorm_1.JoinColumn)({ name: 'categoryId', referencedColumnName: 'categoryId' }),
     __metadata("design:type", category_entity_1.Category)
 ], Product.prototype, "category", void 0);
 __decorate([
@@ -82,6 +80,6 @@ __decorate([
     __metadata("design:type", Number)
 ], Product.prototype, "ratingCount", void 0);
 Product = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'product' })
 ], Product);
 exports.Product = Product;

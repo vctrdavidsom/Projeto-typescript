@@ -28,7 +28,8 @@ let CuponsService = class CuponsService {
         return this.cupomRepository.find();
     }
     findOne(id) {
-        return this.cupomRepository.findOneBy({ id });
+        // Replace 'id' with the actual primary key property of Cupom, e.g., 'cupomId'
+        return this.cupomRepository.findOneBy({ cupomId: id });
     }
     async update(id, cupom) {
         const existingCupom = await this.findOne(id);

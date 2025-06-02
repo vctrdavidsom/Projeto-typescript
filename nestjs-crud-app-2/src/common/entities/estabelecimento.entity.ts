@@ -1,9 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
+@Entity({ name: 'estabelecimento' })
 export class Estabelecimento {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn({ name: 'estabelecimentoId' })
+  estabelecimentoId!: number;
 
   @Column()
   nome!: string;
@@ -13,4 +13,7 @@ export class Estabelecimento {
 
   @Column()
   telefone!: string;
+
+  @Column({ default: 'PENDENTE' })
+  status!: string; // 'APROVADO', 'PENDENTE', 'REJEITADO'
 }

@@ -14,9 +14,9 @@ const typeorm_1 = require("typeorm");
 let Entrega = class Entrega {
 };
 __decorate([
-    (0, typeorm_1.PrimaryGeneratedColumn)(),
+    (0, typeorm_1.PrimaryGeneratedColumn)({ name: 'entregaId' }),
     __metadata("design:type", Number)
-], Entrega.prototype, "id", void 0);
+], Entrega.prototype, "entregaId", void 0);
 __decorate([
     (0, typeorm_1.Column)(),
     __metadata("design:type", Number)
@@ -30,6 +30,6 @@ __decorate([
     __metadata("design:type", Date)
 ], Entrega.prototype, "dataEntrega", void 0);
 Entrega = __decorate([
-    (0, typeorm_1.Entity)()
+    (0, typeorm_1.Entity)({ name: 'entrega' })
 ], Entrega);
 exports.Entrega = Entrega;

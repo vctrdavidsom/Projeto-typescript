@@ -10,3 +10,9 @@ node_modules/
 
 # Não ignore o diretório dist
 !dist/
+
+.env
+
+admin-login.md
+
+!.env.example

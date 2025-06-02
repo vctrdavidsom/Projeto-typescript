@@ -22,7 +22,7 @@ export class CategoriesService {
   }
 
   findOne(id: number): Promise<Category | null> {
-    return this.categoryRepository.findOneBy({ id });
+    return this.categoryRepository.findOneBy({ categoryId: id });
   }
 
   findOneByName(name: string): Promise<Category | null> {

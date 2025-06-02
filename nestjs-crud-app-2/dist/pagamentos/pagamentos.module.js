@@ -12,13 +12,15 @@ const typeorm_1 = require("@nestjs/typeorm");
 const pagamentos_controller_1 = require("./pagamentos.controller");
 const pagamentos_service_1 = require("./pagamentos.service");
 const pagamento_entity_1 = require("../common/entities/pagamento.entity");
+const stripe_service_1 = require("./stripe.service");
 let PagamentosModule = class PagamentosModule {
 };
 PagamentosModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([pagamento_entity_1.Pagamento])],
         controllers: [pagamentos_controller_1.PagamentosController],
-        providers: [pagamentos_service_1.PagamentosService],
+        providers: [pagamentos_service_1.PagamentosService, stripe_service_1.StripeService],
+        exports: [pagamentos_service_1.PagamentosService, stripe_service_1.StripeService], // exporta ambos para outros módulos
     })
 ], PagamentosModule);
 exports.PagamentosModule = PagamentosModule;

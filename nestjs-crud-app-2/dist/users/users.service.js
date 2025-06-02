@@ -23,7 +23,7 @@ let UsersService = class UsersService {
     }
     async create(createUserDto) {
         try {
-            const user = this.usersRepository.create(createUserDto);
+            const user = this.usersRepository.create(Object.assign(Object.assign({}, createUserDto), { role: createUserDto.role || user_entity_1.UserRole.USER, profileType: createUserDto.profileType || user_entity_1.UserProfileType.CUSTOMER, isEmailVerified: createUserDto.isEmailVerified || false, provider: createUserDto.senha ? 'local' : (createUserDto.provider || 'google') }));
             return await this.usersRepository.save(user);
         }
         catch (error) {
@@ -36,21 +36,46 @@ let UsersService = class UsersService {
     async findByEmail(email) {
         return this.usersRepository.findOne({ where: { email } });
     }
-    async findById(id) {
-        const user = await this.usersRepository.findOne({ where: { id } });
-        if (!user) {
-            throw new common_1.NotFoundException('Usuário não encontrado');
-        }
+    async findById(userId) {
+        const user = await this.usersRepository.findOne({ where: { userId } });
+        if (!user)
+            throw new Error('Usuário não encontrado');
         return user;
     }
-    async update(id, updateUserDto) {
-        const user = await this.findById(id);
+    async update(userId, updateUserDto) {
+        const user = await this.findById(userId);
         Object.assign(user, updateUserDto);
         return this.usersRepository.save(user);
     }
-    async remove(id) {
-        const user = await this.findById(id);
+    async remove(userId) {
+        const user = await this.findById(userId);
         await this.usersRepository.remove(user);
+    }
+    async findAll(filtro) {
+        // Exemplo de filtro: { nome, email, perfil, status }
+        // Ajuste conforme sua estrutura de entidade
+        const where = {};
+        if (filtro === null || filtro === void 0 ? void 0 : filtro.nome)
+            where.firstName = filtro.nome;
+        if (filtro === null || filtro === void 0 ? void 0 : filtro.email)
+            where.email = filtro.email;
+        // Adicione outros filtros conforme necessário
+        return this.usersRepository.find({ where });
+    }
+    async findOneDetalhado(userId) {
+        // Retorna o usuário com perfis e histórico de pedidos (ajuste relations conforme necessário)
+        return this.usersRepository.findOne({ where: { userId }, relations: ['perfis'] });
+    }
+    async alterarStatus(userId, status) {
+        const user = await this.findById(userId);
+        user.status = status;
+        return this.usersRepository.save(user);
+    }
+    async alterarPerfis(userId, perfis) {
+        const user = await this.findById(userId);
+        // Ajuste conforme sua lógica de perfis
+        // user.perfis = perfis;
+        return this.usersRepository.save(user);
     }
 };
 UsersService = __decorate([

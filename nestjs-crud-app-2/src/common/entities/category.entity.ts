@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { Product } from './product.entity';
 
-@Entity()
+@Entity({ name: 'category' })
 export class Category {
-  @PrimaryGeneratedColumn()
-  id!: number;
+  @PrimaryGeneratedColumn({ name: 'categoryId' })
+  categoryId!: number;
 
   @Column({ unique: true })
   name!: string;
